@@ -1,0 +1,33 @@
+# Django Project
+myproject
+asgi.py
+*.sqlite*
+manage.py
+Pipfile*
+
+# Basics
+*.py[cod]
+__pycache__
+
+# Docs
+_build
+
+# Logs
+logs
+*.log
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+htmlcov
+*/tests/db.sqlite3
+
+# Python packaging
+*.egg-info
+.eggs/*
+build/*
+dist/*
+README.rst
+__pycache__
