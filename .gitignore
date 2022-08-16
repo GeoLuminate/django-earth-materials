@@ -5,7 +5,8 @@ asgi.py
 manage.py
 Pipfile*
 load.py
-admin.py
+*admin.py
+*filters.py
 
 # Basics
 *.py[cod]

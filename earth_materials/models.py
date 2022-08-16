@@ -1,4 +1,3 @@
-from weakref import proxy
 from django.db import models
 from treebeard.mp_tree import MP_Node
 from django.utils.translation import gettext as _
