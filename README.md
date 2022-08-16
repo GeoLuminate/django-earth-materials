@@ -39,7 +39,7 @@ Django Earth Materials provides an `EarthMaterialFK`, `EarthMaterialM2M` and `Ea
 
 Each field automatically points to the correct database table and also sub-classes fields provided by `django-treewidget` in order to utilize the `jstree` javascript widget in forms. When viewing this model in the Django Admin site, you will now be presented with a field that looks like this,
 
-![Visualise](https://geoluminate.github.io/django-earth-materials/images/admin_widget.png)
+![Visualise](https://geoluminate.github.io/django-earth-materials/images/admin_widget.PNG)
 
 where admin can select one or more items depending on the type of field used. The widget can be customised either by supplying the `settings` and `treeoptions` arguments to the model field or by providing customisation options project wide in `settings.py` as `TREEWIDGET_SETTINGS` and `TREEWIDGET_TREEOPTIONS`. See the readme at [`django-treewidget`](https://github.com/netzkolchose/django-treewidget) for further instructions on customisation.
 
