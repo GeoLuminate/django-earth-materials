@@ -10,15 +10,15 @@ class EarthMaterialTreeAdmin(TreeAdmin):
     form = movenodeform_factory(EarthMaterial)
     node_filter_depth = 2
     search_fields = [
-        'label','notation',
+        'name','code',
     ]
 
 class EarthMaterialAdmin(admin.ModelAdmin):
     form = movenodeform_factory(EarthMaterial)
-    list_display = ['label','notation','definition']
-    list_filter = ['status','depth']
+    list_display = ['name','code','description']
+    # list_filter = ['status','depth']
     search_fields = [
-        'label','notation', 
+        'name','code', 
     ]
 
 
