@@ -4,6 +4,7 @@ asgi.py
 *.sqlite*
 manage.py
 Pipfile*
+load.py
 
 # Basics
 *.py[cod]
