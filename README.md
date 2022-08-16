@@ -13,7 +13,7 @@ Everyone who has worked with an Earth science database knows that geologists can
 Standards such as the BGS Earth Material Class have been developed to address this issue and geologists are kindly asked to adhere to the scheme when classifying their samples. Unfortunately, there are still some issues that lead to poor reporting:
 
 1) Nothing is done to enforce usage of any particular classification scheme
-2) In order to make use of a classification scheme, the geologist/researcher must actively look up the closest match for each sample
+2) Making use of a classification scheme means actively looking up the correct classification for each sample which can become extremely tedious for many samples
 3) When an attempt is made to do this, simple things like spelling or formatting errors can lead to the same rock types being listed multiple times
 
 Django Earth Materials tries to address these issues by **enforcing** use of the BGS classification scheme through a simple tree-based select widget. In this way, a single scheme is in use across all databases that make use of this app, users don't have to go looking for the correct classification on external sites, and spelling/formatting errors are eliminated.
