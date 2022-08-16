@@ -22,7 +22,8 @@ setup(
     url=REPO_URL,
     install_requires=[
         "Django>=3",    
-        "django-treebeard==1.0.0",  
+        "django-treebeard==1.0.0", 
+        "django-treewidget", 
         ],
     keywords='science django geology geoscience rock classification',
     classifiers=[
