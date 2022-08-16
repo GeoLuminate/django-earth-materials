@@ -60,6 +60,26 @@ where admin can select one or more items depending on the type of field used.
 
 > **_NOTE:_**  The above image is taken from an admin site that utilizes the [Djang Grappelli](https://grappelliproject.com) admin interface. If you don't use Grappelli then your field may look slightly different.
 
+
+## Settings
+
+Django Earth Materials includes two settings, `EARTH_MATERIALS_INCLUDE` and `EARTH_MATERIALS_EXCLUDE`, that can be declared in your `settings.py` file to control what tree nodes are available in the form widget. These are useful if your project is dedicated to a specific rock group. For example, 
+
+    EARTH_MATERIALS_INCLUDE = [
+        'Igneous rock and sediment',
+        'Metamorphic rock',
+        ]
+
+will restrict the widget to only igneous and metamorphic rock types. Alternatively,
+
+    EARTH_MATERIALS_EXCLUDE = [
+        'Superficial deposit (natural and/or artificial)'
+        ]
+        
+will exclude artificial materials from the widget.
+
+> **_NOTE:_** If both `EARTH_MATERIALS_INCLUDE` and `EARTH_MATERIALS_EXCLUDE` are found in settings.py, only `EARTH_MATERIALS_INCLUDE` will be used.
+
 ## Customisation
 
 The widget can be customised either by supplying the `settings` and `treeoptions` arguments to the model field or by providing customisation options project wide in `settings.py` as `TREEWIDGET_SETTINGS` and `TREEWIDGET_TREEOPTIONS`. See the readme at [`django-treewidget`](https://github.com/netzkolchose/django-treewidget) for further instructions on customisation.
