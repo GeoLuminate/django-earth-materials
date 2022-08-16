@@ -1,6 +1,7 @@
 from django.db.models import Q, F
 from django.db.models.functions import Substr
 from earth_materials.models import EarthMaterial
+import os
 
 ParentPath = Substr('path', 1, (F('depth') - 1) * EarthMaterial.steplen )
 RootPath = Substr('path', 1, EarthMaterial.steplen)
@@ -27,3 +28,8 @@ def include_ancestors(queryset=None):
     for node in queryset:
         queryset |= node.get_ancestors()
     return queryset.values_list('id')
+
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+database = os.path.join(dir_path,'data/data.csv')
