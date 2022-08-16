@@ -78,7 +78,7 @@ will restrict the widget to only igneous and metamorphic rock types. Alternative
         
 will exclude artificial materials from the widget.
 
-> **_NOTE:_** If both `EARTH_MATERIALS_INCLUDE` and `EARTH_MATERIALS_EXCLUDE` are found in settings.py, only `EARTH_MATERIALS_INCLUDE` will be used.
+> **_NOTE:_** If both `EARTH_MATERIALS_INCLUDE` and `EARTH_MATERIALS_EXCLUDE` are found in `settings.py`, only `EARTH_MATERIALS_INCLUDE` will be used.
 
 ## Customisation
 
