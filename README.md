@@ -3,6 +3,7 @@
 Django Earth Materials is a Django app for integrating the British Geological Survey's [Earth Material Class (Rock Classification Scheme)](https://data.bgs.ac.uk/doc/EarthMaterialClass.html)<sup>1</sup> into your Django app. 
 
 
+<iframe src="https://geoluminate.github.io/django-earth-materials/" title="Visualization"></iframe>
 
 
 <sup>1</sup> British Geological Survey. 2020. The BGS Rock Classification Scheme [Linked Open Data]. Keyworth, Nottingham. Available from http://data.bgs.ac.uk/ref/EarthMaterialClass
