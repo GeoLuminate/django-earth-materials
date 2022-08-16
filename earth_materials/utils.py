@@ -1,20 +1,29 @@
 from django.db.models import Q, F
 from django.db.models.functions import Substr
+from earth_materials.models import EarthMaterial
 
-ParentPath = Substr('path', 1, (F('depth') - 1) * 4 )
+ParentPath = Substr('path', 1, (F('depth') - 1) * EarthMaterial.steplen )
+RootPath = Substr('path', 1, EarthMaterial.steplen)
+
+def filter_tree(queryset=None, exclude=False):
+    """builds a query to either filter or exclude nodes in the tree"""
+
+    # start by getting the descendants
+    query = Q(id__in = include_descendants(queryset))
+
+    if exclude:
+        # if we are excluding, return the negate Q object
+        return ~query
+    else:
+        # if we are filtering, we need to first add the ancestors otherwise the tree won't build correctly
+        return query | Q(id__in = include_ancestors(queryset))
 
 def include_descendants(queryset=None):
-        descendants = Q()
-        nodes = queryset.values('path', 'depth')
-        for node in nodes:
-            descendants |= Q(path__startswith=node['path'], depth__gt=node['depth'])
-        return queryset.model.objects.filter(Q(id__in=queryset.values_list('id')) | descendants)
+    for node in queryset:
+        queryset |= node.get_descendants()
+    return queryset
 
 def include_ancestors(queryset=None):
-        queryset = queryset.annotate(root=Substr('path', 1, queryset.model.steplen))
-        nodes = list(set(queryset.values_list('root', 'depth')))
-
-        ancestors = Q()
-        for node in nodes:
-            ancestors |= Q(path__startswith=node[0], depth__lt=node[1])
-        return queryset.model.objects.filter(Q(id__in=queryset.values_list('id')) | ancestors)
+    for node in queryset:
+        queryset |= node.get_ancestors()
+    return queryset.values_list('id')
