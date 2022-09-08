@@ -8,15 +8,7 @@ Django Earth Materials is a simple app for integrating the British Geological Su
 
 ## Why?
 
-Everyone who has worked with an Earth science database knows that geologists can be either very creative or incredibly specific when they assign a name to a particular sample they are working with (e.g. hyper-crystallised, megalodon-tooth-bearing niche schist). While this sort of freedom is useful in covering geological edge-cases, from a database perspective it makes it very difficult to aggregate, process, analyse and share data. 
-
-Standards such as the BGS Earth Material Class have been developed to address this issue and geologists are kindly asked to adhere to the scheme when classifying their samples. Unfortunately, there are still some issues that lead to poor reporting:
-
-1) Nothing is done to enforce usage of any particular classification scheme
-2) Making use of a classification scheme means actively looking up the correct classification for each sample which can become extremely tedious for many samples
-3) When an attempt is made to do this, simple things like spelling or formatting errors can lead to the same rock types being listed multiple times
-
-Django Earth Materials tries to address these issues by **enforcing** use of the BGS classification scheme through a simple tree-based select widget. In this way, a single scheme is in use across all databases that make use of this app, users don't have to go looking for the correct classification on external sites, and spelling/formatting errors are eliminated.
+Inconsistencies in the way rock types are reported in geological datasets are a major barrier to compilation, aggregation and analysis of geoscience data. Standards such as the BGS Earth Material Class exist to address this issue but there is little way of enforcing adherance to such a scheme other than asking politely. Django Earth Materials fixes this issue (at least for online applications) by providing `EarthMaterialFK`, `EarthMaterialM2M` and `EarthMaterialOneToOne` relationship fields that will validate user input against the BGS classification scheme.
 
 ## Installation
 
@@ -80,6 +72,8 @@ will exclude artificial materials from the widget.
 
 > **_NOTE:_** If both `EARTH_MATERIALS_INCLUDE` and `EARTH_MATERIALS_EXCLUDE` are found in `settings.py`, only `EARTH_MATERIALS_INCLUDE` will be used.
 
+> **_WARNING:_**  The method currently used to include or exclude fields has not been thoroughly tested performance wise. You may encounter issues using large lists of includes or excludes.
+
 ## Customisation
 
 The widget can be customised either by supplying the `settings` and `treeoptions` arguments to the model field or by providing customisation options project wide in `settings.py` as `TREEWIDGET_SETTINGS` and `TREEWIDGET_TREEOPTIONS`. See the readme at [`django-treewidget`](https://github.com/netzkolchose/django-treewidget) for further instructions on customisation.
@@ -102,14 +96,16 @@ The following settings are recommended here but not required:
     }
 
 
-## FAQ
-
-* Why the BGS rock classification scheme and not *\*insert scheme x\**?
-
-   The BGS rock classification scheme is a) comprehensive and well thought out; and b) readily available online making it relatively easy to import the data into a Django structure.
-
 ## Issues & Inconsistencies
 
 The following pages returned a 404 during the data gathering stage so no information could be retrieved from it or any associated children:
 
 * A child of Sediment and sedimentary rock could not be found at http://data.bgs.ac.uk/id/EarthMaterialClass/RockName/PS_PS&P 
+
+## Acknowledgments
+
+This software is provided open-source thanks to:
+
+[![GeoForschungsZentrum logo](https://geoluminate.github.io/images/gfz_logo.png)](https://www.gfz-potsdam.de)
+
+[![GeoLuminate logo](https://geoluminate.github.io/images/standard_w1000.png)](https://www.geoluminate.com.au)
